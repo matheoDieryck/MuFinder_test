@@ -1,0 +1,14 @@
+﻿@model MuFinder.Models.TrackItem[]
+
+<h1>Search Results</h1>
+
+
+@foreach (var track in Model)
+{
+	<div>
+		<h3>@track.Name</h3>
+		<p>Duration: @track.Duration</p>
+		<p>ID: @track.Id</p>
+		<iframe src="https://open.spotify.com/embed/track/@track.Id" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	</div>
+}
