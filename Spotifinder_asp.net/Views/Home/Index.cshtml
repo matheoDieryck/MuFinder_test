@@ -1,26 +1,35 @@
-﻿@{
-    ViewData["Home"] = "Home Page";
-}
+﻿    @{
+        ViewData["Home"] = "Home Page";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewData["Home"]</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-</head>
-<body>
-    <h1>Search for a Song</h1>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Home"]</title>
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    </head>
+    <body>
+        <h1>Search for a Song</h1>
+        <form asp-action="Login" method="post">
+            <button type="submit">Login</button>
+        </form>
 
-    <form asp-action="Search" method="post">
-        <input type="text" name="query" />
-        <button type="submit">Search</button>
-    </form>
+        <form asp-action="Search" method="post">
+            <input type="text" name="query" />
+            <button type="submit">Search</button>
+        </form>
+            <div class="user-info">
+                <img src="@ViewBag.ProfilePictureUrl" alt="Profile picture">
+                <span>@ViewBag.UserName</span>
+            </div>
+        
 
-    <div id="map" style="height: 400px;"></div>
+        <div id="map" style="height: 400px;"></div>
 
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Leaflet JavaScript -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Initialize the map with a default location
